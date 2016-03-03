@@ -8,5 +8,5 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec/
 before_script:
-  - postgresql -e 'create database mydoctor_test'
+  - psql -c 'create database mydoctor_test;' -U postgres
 bundler_args: --binstubs=./bundler_stubs

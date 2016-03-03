@@ -48,7 +48,7 @@ test:
   adapter: postgresql
   encoding: uft8
   database: mydoctor_test
-  username: travis
+  username: postgres
 
 production:
   adapter: postgresql
