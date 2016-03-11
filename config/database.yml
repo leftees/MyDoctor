@@ -47,7 +47,9 @@ development:
 test:
   adapter: postgresql
   database: mydoctor_test
+  host: localhost
   username: postgres
+  password: postgres
 
 production:
   adapter: postgresql
