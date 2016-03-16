@@ -24,6 +24,11 @@
   </div>
 
   <div class="field">
+    <%= f.label "Specialty" %><br />
+    <%= f.collection_select :doctor_category_id, DoctorCategory.all, :id, :name, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, class: 'form-control' %>
   </div>
