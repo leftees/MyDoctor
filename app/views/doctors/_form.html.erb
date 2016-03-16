@@ -1,0 +1,42 @@
+<%= form_for(@doctor) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :experience %><br>
+    <%= f.text_field :experience, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :about_me %><br>
+    <%= f.text_area :about_me, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hospital_name %><br>
+    <%= f.text_field :hospital_name, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hospital_address %><br>
+    <%= f.text_area :hospital_address, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hospital_landmark %><br>
+    <%= f.text_field :hospital_landmark, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hospital_phone %><br>
+    <%= f.text_field :hospital_phone, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", :class => 'button right' %>
+  </div>
+  
+<% end %>
