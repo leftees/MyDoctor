@@ -1,10 +1,20 @@
-<% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+<% if doctor_signed_in? %>
+  <li><%= link_to 'Edit Account', edit_doctor_registration_path %></li>
+  <li><%= link_to 'Sign out', destroy_doctor_session_path, :method=>'delete' %></li>
+<% elsif user_signed_in? %>
+  <li><%= link_to 'Edit Account', edit_user_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 <% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+  <li><%= link_to 'Admin Sign in', new_user_session_path %></li>
+  <li><%= link_to 'Admin Sign up', new_user_registration_path %></li>
+  <li><%= link_to 'Doctor Sign in', new_doctor_session_path %></li>
+  <li><%= link_to 'Doctor Sign up', new_doctor_registration_path %></li>
 <% end %>
+
+<% if doctor_signed_in? %>
+  <li><%#= link_to 'Doctors', doctors_path %></li>
+<% end %>
+
 <% if user_signed_in? %>
   <li><%= link_to 'Users', users_path %></li>
 <% end %>

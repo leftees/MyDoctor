@@ -1,12 +1,31 @@
 <div class="authform">
-<h2>Doctors Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <h2>Doctors Sign up</h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true , class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.text_field :age, autofocus: true , class: 'form-control' %>
+  </div>
+
+<!--   <div class="field">
+    <%= f.label "Date of Birth" %><br />
+    <%= f.date_select :dob, autofocus: true, class: 'form-control' %>
+  </div> -->
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.telephone_field :phone_number, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -14,18 +33,18 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", :class => 'button right' %>
   </div>
 <% end %>
 
-<%= render "doctors/shared/links" %>
+<%= render "doctors/shared/links"%>
 </div>
