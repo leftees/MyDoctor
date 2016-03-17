@@ -1,6 +1,10 @@
-<%= @doctor_category.name%>
-
-
-
-<%= link_to 'Edit', edit_doctor_category_path(@doctor_category) %> |
-<%= link_to 'Back', doctor_categories_path %>
+</br></br>
+<div align="center" style="width:75% !important;">
+<div class="container">
+<div class="row">
+<div class="col-md-1 col-md-offset-4"><b><%= @doctor_category.name.capitalize%></b></div>
+<div class="col-md-1"><%= link_to 'Edit', edit_doctor_category_path(@doctor_category) %></div>
+<div class="col-md-1"><%= link_to 'Back', doctor_categories_path %></div>
+</div>
+</div>
+</div>
