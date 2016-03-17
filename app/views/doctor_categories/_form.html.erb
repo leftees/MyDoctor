@@ -1,14 +1,6 @@
 <%= form_for(@doctor_category) do |f| %>
-<br>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div><br>
-
-  
-  
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <%= f.text_field :name, :placeholder => "Enter category name" %>
+    <%= f.submit :class => "btn btn-primary" %>
   </div>
 <% end %>
