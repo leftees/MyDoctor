@@ -16,7 +16,7 @@ feature 'Edit Doctor Category' do
     visit "doctor_categories/#{dc.id}/edit"
     fill_in "doctor_category_name", :with => ""
     click_button "Update Doctor category"
-    expect(page).to have_content 'Editing Doctor'
+    expect(page).to have_content 'Edit Doctor Category'
   end
 
 
@@ -25,6 +25,6 @@ feature 'Edit Doctor Category' do
     visit "doctor_categories/#{dc.id}/edit"
     fill_in "doctor_category_name", :with => "45565**%$^"
     click_button "Update Doctor category"
-    expect(page).to have_content 'Editing Doctor'
+    expect(page).to have_content 'Edit Doctor Category'
   end
 end
