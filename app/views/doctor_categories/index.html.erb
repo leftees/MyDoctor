@@ -8,7 +8,7 @@
  <p id="notice"><%= notice %></p>
 
 <h1>Listing Doctors Category</h1>
-<br>
+<br><br>
 <table class="table" style="width:50%">
   <thead>
     <tr>
@@ -19,10 +19,12 @@
   <tbody>
     <% @doctor_categories.each do |doctor_category| %>
       <tr >
-      <td colspan="2"><%=doctor_category.name %></td>
+      <td colspan="2"><%=doctor_category.name.capitalize %></td>
       <td style="width:10%"><%= link_to 'Show', doctor_category %></td>
       <td style="width:10%"><%= link_to 'Edit', edit_doctor_category_path(doctor_category) %></td>
       <td style="width:10%"><%= link_to 'Destroy', doctor_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      
       </tr>
     <% end %>
   </tbody>
