@@ -3,7 +3,7 @@ require 'rails_helper'
 
 feature 'Edit Doctor Category' do
 
-  scenario 'Edit doctor category' do
+  scenario 'Edit doctor category from index page' do
   	dc = FactoryGirl.create(:doctor_category)
     visit "doctor_categories/#{dc.id}/edit"
     fill_in "Name", :with => "My test name"
