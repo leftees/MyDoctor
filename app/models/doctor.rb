@@ -8,6 +8,6 @@ class Doctor < ActiveRecord::Base
   belongs_to :doctor_category
 
   # Validations
-  validates :name, :age, :phone_number, presence: true
+  validates :name, :age, presence: true
 
 end
