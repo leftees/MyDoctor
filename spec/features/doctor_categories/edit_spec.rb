@@ -27,4 +27,5 @@ feature 'Edit Doctor Category' do
     click_button "Update Doctor category"
     expect(page).to have_content 'Edit Doctor Category'
   end
+
 end
