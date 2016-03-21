@@ -35,6 +35,13 @@
     <%= f.text_field :hospital_phone, class: 'form-control' %>
   </div>
 
+  <%= f.fields_for :doccuments do |builder| %>
+    <% if builder.object.new_record? %>
+      <%= builder.label :avatar, "Add Doccuments" %><br />
+      <%= builder.file_field :avatar%>
+    <% end %>
+  <% end %> 
+
   <div class="actions">
     <%= f.submit "Update", :class => 'button right' %>
   </div>
