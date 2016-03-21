@@ -1,0 +1,25 @@
+ <p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <h3>Doctors</h3>
+    <div class="column">
+      <table class="table">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Experience</th>
+          </tr>
+        <tbody>
+          <% @doctors.each do |doctor| %>
+            <tr>
+              <%= render doctor %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<%= link_to 'New Doctor', new_doctor_path %>
+</div>
