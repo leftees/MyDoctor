@@ -7,6 +7,7 @@ def index
 end
 
 def show
+  @doctors = @doctor_category.doctors.active
 end
 
 def new
