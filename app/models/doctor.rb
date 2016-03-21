@@ -10,4 +10,5 @@ class Doctor < ActiveRecord::Base
   # Validations
   validates :name, :age, presence: true
 
+  scope :active, -> { where(active: true) }
 end

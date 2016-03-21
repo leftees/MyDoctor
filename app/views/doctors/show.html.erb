@@ -1,4 +1,15 @@
-<%= @doctor.name%>
+
+<div class="container">
+ <h2>Doctor Details</h2>
+	  <ul class="list-group">
+	    <li class="list-group-item"><span class="badge"></span> 
+	    <%= link_to doctor.name.capitalize %><br />
+	    <%= "#{doctor.experience} years of experience"%><br />
+	    <%= "Working at #{doctor.hospital_name}" %><br />
+	    </li>
+	  </ul>
+  <% end %>
+</div>
 
 
 
