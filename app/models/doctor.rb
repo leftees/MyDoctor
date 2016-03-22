@@ -9,7 +9,7 @@ class Doctor < ActiveRecord::Base
   has_many :doccuments, :dependent => :destroy
 
   # Validations
-  #validates :name, :age, :phone_number, presence: true
+  validates :name, :age, :phone_number, presence: true
   accepts_nested_attributes_for :doccuments
 
   scope :active, -> { where(active: true) }

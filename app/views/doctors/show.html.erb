@@ -1,17 +1,40 @@
 
 <div class="container">
- <h2>Doctor Details</h2>
+<!--  <h2>Doctor Details</h2>
 	  <ul class="list-group">
 	    <li class="list-group-item"><span class="badge"></span> 
-	    <%= link_to doctor.name.capitalize %><br />
-	    <%= "#{doctor.experience} years of experience"%><br />
-	    <%= "Working at #{doctor.hospital_name}" %><br />
+	    <%= link_to @doctor.name.capitalize %><br />
+	    <%= "#{@doctor.experience} years of experience"%><br />
+	    <%= "Working at #{@doctor.hospital_name}" %><br />
 	    </li>
-	  </ul>
-  <% end %>
+	  </ul> -->
+</div>
+
+
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= link_to @doctor.name.capitalize %></h1>
+    
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>About</h3>
+      <p><%= "#{@doctor.experience} years of experience" %></p>
+      <p><%= "Working at #{@doctor.hospital_name}" %></p>
+      <p><%= "#{@doctor.about_me}" %></p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Clinic</h3>
+      <p><%= "#{@doctor.hospital_name.capitalize}" %></p>
+      <p><%= "#{@doctor.hospital_address}" %></p>
+      <p><%= "#{@doctor.hospital_landmark}" %></p>
+      <p><%= "#{@doctor.hospital_phone}" %></p>
+    </div>
+  </div>
 </div>
 
 
 
-<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
-<%= link_to 'Back', doctors_path %>
+
+<%#= link_to 'Edit', edit_doctor_path(@doctor) %> 
+<%#= link_to 'Back', doctors_path %>

@@ -1,15 +1,43 @@
 <% if user_signed_in? %>
 	<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
 <% elsif doctor_signed_in? %>
-	<h3><%= "Welcome #{current_doctor.name}" %></h3>
+	<h3><%#= "Welcome #{current_doctor.name.capitalize}" %></h3>
+<% elsif patient_signed_in? %>
+	<h3><%= "Welcome #{current_patient.name.capitalize}" %></h3>
 <% end %>
 
+<% if (!doctor_signed_in?) %>
+	<div class="container">
+	 <h2>Doctor Categories</h2>
+	 <% DoctorCategory.all.each do |doctor_category| %>
+		  <ul class="list-group">
+		    <li class="list-group-item"><span class="badge"><%= doctor_category.doctors.count %></span> 
+		    <%= link_to doctor_category.name, doctor_category %></li>
+		  </ul>
+	  <% end %>
+	</div>
+<% else %>
+
 <div class="container">
- <h2>Doctor Categories</h2>
- <% DoctorCategory.all.each do |doctor_category| %>
-	  <ul class="list-group">
-	    <li class="list-group-item"><span class="badge"><%= doctor_category.doctors.count %></span> 
-	    <%= link_to doctor_category.name, doctor_category %></li>
-	  </ul>
-  <% end %>
+  <div class="jumbotron">
+    <h1><%= link_to @doctor.name.capitalize %></h1>
+    
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>About</h3>
+      <p><%= "#{@doctor.experience} years of experience" %></p>
+      <p><%= "Working at #{@doctor.hospital_name}" %></p>
+      <p><%= "#{@doctor.about_me}" %></p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Clinic</h3>
+      <p><%= "#{@doctor.hospital_name.capitalize}" %></p>
+      <p><%= "#{@doctor.hospital_address}" %></p>
+      <p><%= "#{@doctor.hospital_landmark}" %></p>
+      <p><%= "#{@doctor.hospital_phone}" %></p>
+    </div>
+  </div>
 </div>
+
+<%end%>
