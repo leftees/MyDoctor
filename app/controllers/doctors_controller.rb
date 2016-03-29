@@ -13,7 +13,7 @@ class DoctorsController < ApplicationController
   end
 
   def edit
-    @doctor.doccuments.build 
+    @doctor.documents.build 
   end
 
   def update
@@ -58,7 +58,7 @@ class DoctorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      params.require(:doctor).permit(:name, :email, :age, :phone_number, :experience, :about_me, :hospital_name, :hospital_address, :hospital_phone, :hospital_landmark, doccuments_attributes: [:doctor_id, :avatar])
+      params.require(:doctor).permit(:name, :email, :age, :phone_number, :experience, :about_me, :hospital_name, :hospital_address, :hospital_phone, :hospital_landmark, documents_attributes: [:doctor_id, :avatar])
     end
 
 end

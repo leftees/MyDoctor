@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :doccument do
+  factory :document do
     
   end
 
