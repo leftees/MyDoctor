@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'pry'
 gem 'rails_admin'
+gem 'heroku'
+gem 'city-state'
 group :development, :test do
   gem 'byebug'
 end
