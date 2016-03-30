@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328093433) do
+ActiveRecord::Schema.define(version: 20160330042630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "doccuments", force: :cascade do |t|
+    t.integer  "doctor_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "doctor_categories", force: :cascade do |t|
     t.string   "name",       default: "", null: false
@@ -52,6 +62,8 @@ ActiveRecord::Schema.define(version: 20160328093433) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "state"
+    t.string   "city"
   end
 
   add_index "doctors", ["confirmation_token"], name: "index_doctors_on_confirmation_token", unique: true, using: :btree
@@ -84,15 +96,10 @@ ActiveRecord::Schema.define(version: 20160328093433) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "patients", ["confirmation_token"], name: "index_patients_on_confirmation_token", unique: true, using: :btree
   add_index "patients", ["email"], name: "index_patients_on_email", unique: true, using: :btree
   add_index "patients", ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true, using: :btree
 

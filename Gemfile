@@ -12,6 +12,8 @@ gem 'pg'
 gem 'pry'
 gem 'rails_admin'
 gem 'paperclip'
+gem 'city-state'
+gem 'heroku'
 group :development, :test do
   gem 'byebug'
 end
