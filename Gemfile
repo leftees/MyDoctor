@@ -7,7 +7,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'pg'
+group :production  do 
+  gem 'pg'  
+end
 gem 'pry'
 gem 'rails_admin'
 gem 'paperclip'
