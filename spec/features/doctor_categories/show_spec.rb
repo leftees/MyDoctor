@@ -7,6 +7,6 @@ feature 'Show Doctor Category' do
   	dc = FactoryGirl.create(:doctor_category)
     visit "doctor_categories/#{dc.id}"
     
-    expect(page).to have_content dc.name.capitalize
+    expect(page).to have_content dc.name
   end
 end

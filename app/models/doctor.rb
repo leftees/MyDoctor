@@ -6,8 +6,10 @@ class Doctor < ActiveRecord::Base
 
   # Associations         
   belongs_to :doctor_category
-
+  has_many :documents, :dependent => :destroy
+  accepts_nested_attributes_for :documents
   # Validations
-  validates :name, :age, presence: true
+  validates :name, :age, :phone_number, presence: true
 
+  scope :active, -> { where(active: true) }
 end

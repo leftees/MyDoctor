@@ -1,10 +1,32 @@
-</br></br>
-<div align="center" style="width:75% !important;">
+
+
 <div class="container">
-<div class="row">
-<div class="col-md-1 col-md-offset-4"><b><%= @doctor_category.name.capitalize%></b></div>
-<div class="col-md-1"><%= link_to 'Edit', edit_doctor_category_path(@doctor_category) %></div>
-<div class="col-md-1"><%= link_to 'Back', doctor_categories_path %></div>
+ <h2>Listing Doctors for <%= @doctor_category.name%></h2>
+ <% @doctors.all.each do |doctor| %>
+	  <ul class="list-group">
+	    <li class="list-group-item"><span class="badge"></span> 
+	    <%= link_to doctor.name.capitalize, doctor %><br />
+	    <%= "#{doctor.experience} years of experience"%><br />
+	    <%= "Working at #{doctor.hospital_name}" %><br />
+	    </li>
+	  </ul>
+  <% end %>
 </div>
-</div>
-</div>
+
+
+	<!-- <div class="container">
+	  <h2>Doctors</h2>
+	  <% @doctors.all.each do |doctor| %>
+		  <button type="button" class="btn btn-info" data-toggle="collapse" 
+		  data-target= "#demo_#{doctor.id.to_s}" %><%= doctor.name %></button>
+		  <div id="demo_#{doctor.id}" class="collapse">
+			    <%= link_to doctor.name.capitalize, doctor %><br />
+			    <%= "#{doctor.experience} years of experience"%><br />
+			    <%= "Working at #{doctor.hospital_name}" %><br />
+		  </div>
+		  <br />
+	  <%end%>
+	</div> -->
+
+<%#= link_to 'Edit', edit_doctor_category_path(@doctor_category) %> 
+<%#= link_to 'Back', doctor_categories_path data-target="#demo#{doctor.id}"> %>
