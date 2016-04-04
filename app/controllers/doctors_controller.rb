@@ -13,7 +13,14 @@ class DoctorsController < ApplicationController
   end
 
   def edit
+    @cities = CS.cities(@doctor.state, :in) unless @doctor.state.blank?
+    @display = @cities ? 'display:block' : 'display:none'
     @doctor.documents.build 
+  end
+
+  
+  def cities
+    render json: CS.cities(params[:state], :in).to_json
   end
 
   def update
