@@ -7,14 +7,13 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-group :production  do 
-  gem 'pg'  
-end
+gem 'pg'  
 gem 'pry'
 gem 'rails_admin'
 gem 'paperclip'
 gem 'city-state'
-gem 'heroku'
+
+
 group :development, :test do
   gem 'byebug'
 end

@@ -2,7 +2,7 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.text_field :name, class: 'form-control required' %>
   </div>
 
   <div class="field">
@@ -17,7 +17,7 @@
 
   <div class="field">
     <%= f.label :hospital_name %><br>
-    <%= f.text_field :hospital_name, class: 'form-control' %>
+    <%= f.text_field :hospital_name, class: 'form-control required' %>
   </div>
 
   <div class="field">
@@ -35,25 +35,56 @@
     <%= f.text_field :hospital_phone, class: 'form-control' %>
   </div>
 
-  <div class="field">
+
+  <div class="field" >
     <%= f.label :state %><br>
-    <%= f.text_field :state, class: 'form-control' %>
+    <%= f.collection_select :state, CS.states(:in),:first, :last, class: 'form-control', :prompt => '--Select a State--'%>
   </div>
 
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city, class: 'form-control' %>
+  <div class="field" id='sel-state-cities'>
+      <%= f.label :city %><br>
+      <%= f.select :city, @cities, class: 'form-control', :prompt => '--Select a City--'%>
   </div>
 
-  <%= f.fields_for :documents do |builder| %>
+
+    <%= f.fields_for :documents do |builder| %>
     <% if builder.object.new_record? %>
-      <%= builder.label :avatar, "Add Doccuments" %><br />
+      <%= builder.label :avatar, "Add Documents" %><br />
       <%= builder.file_field :avatar%>
     <% end %>
   <% end %> 
 
   <div class="actions">
-    <%= f.submit "Update", :class => 'button right' %>
+    <%= button_tag "Update", :class => 'button right', :id => 'update_doctor'%>
   </div>
   
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){ 
+    $("#doctor_state").click(function()
+      {
+        var state1 = $('#doctor_state').val();
+        $.ajax({
+          method: "GET",
+          url: "http://localhost:3000/cities/",
+          data: { state:state1 }
+        })
+
+        .done(function( cities ) {
+          var cityElm=$("#sel-state-cities")
+          var optValues=""
+          cityElm.css("display","block")
+
+          for (i = 0; i < cities.length; i++) { 
+            optValues += "<option>" + cities[i] + "</option>";
+          }
+          cityElm.html("<select name=doctor[city]>" + optValues+ "</select>")  
+        });
+      } 
+    );
+
+
+  });
+    
+</script>
