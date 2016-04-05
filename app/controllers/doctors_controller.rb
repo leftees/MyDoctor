@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
-
+  before_action :get_cities, only: [:edit, :cities]
   def index
   	@doctors = Doctor.all
   end
@@ -13,14 +13,12 @@ class DoctorsController < ApplicationController
   end
 
   def edit
-    @cities = CS.cities(@doctor.state, :in) unless @doctor.state.blank?
-    @display = @cities ? 'display:block' : 'display:none'
     @doctor.documents.build 
   end
 
   
   def cities
-    render json: CS.cities(params[:state], :in).to_json
+    render json: @cities.to_json
   end
 
   def update
@@ -66,6 +64,11 @@ class DoctorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
       params.require(:doctor).permit(:name, :email, :age, :phone_number, :experience, :about_me, :hospital_name, :hospital_address, :hospital_phone, :hospital_landmark, :state, :city, documents_attributes: [:doctor_id, :avatar])
+    end
+
+    def get_cities
+      state = params[:state]  ? params[:state] : @doctor.state
+      @cities = CS.cities(state, :in) if state
     end
 
 end

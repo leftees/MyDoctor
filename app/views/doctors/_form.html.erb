@@ -41,11 +41,9 @@
     <%= f.collection_select :state, CS.states(:in),:first, :last, class: 'form-control', :prompt => '--Select a State--'%>
   </div>
 
-  <div class="field" id='sel-state-cities' style="<%=@display%>">
-    <% if @cities %>
+  <div class="field" id='sel-state-cities'>
       <%= f.label :city %><br>
-      <%= f.select :city, @cities, class: 'form-control'%>
-    <% end %>
+      <%= f.select :city, @cities, class: 'form-control', :prompt => '--Select a City--'%>
   </div>
 
 
