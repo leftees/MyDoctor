@@ -1,34 +1,36 @@
-<div  align="center" style="width:75% !important;">  
- <div class="container">
- <div class="row">
- <div class="col-md-2 col-md-offset-10" >
- <%= link_to 'New Doctor Category', new_doctor_category_path %>
-  </div>
- </div>
- <p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+  <div  align="center" style="width:75% !important;">  
+   <div class="container">
+   <div class="row">
+   <div class="col-md-2 col-md-offset-10" >
+   <%= link_to 'New Doctor Category', new_doctor_category_path %>
+    </div>
+   </div>
+   <p id="notice"><%= notice %></p>
 
-<h1>Listing Doctors Category</h1>
-<br><br>
-<table class="table" style="width:50%">
-  <thead>
-    <tr>
-      <th colspan="2">Name</th>
-      <th >Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @doctor_categories.each do |doctor_category| %>
-      <tr >
-      <td colspan="2"><%=doctor_category.name.capitalize %></td>
-      <td style="width:10%"><%= link_to 'Show', doctor_category %></td>
-      <td style="width:10%"><%= link_to 'Edit', edit_doctor_category_path(doctor_category) %></td>
-      <td style="width:10%"><%= link_to 'Destroy', doctor_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-      
+  <h1>Listing Doctors Category</h1>
+  <br><br>
+  <table class="table" style="width:50%">
+    <thead>
+      <tr>
+        <th colspan="2">Name</th>
+        <th >Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-</div>
-</div>
+    </thead>
+    <tbody>
+      <% @doctor_categories.each do |doctor_category| %>
+        <tr >
+        <td colspan="2"><%=doctor_category.name.capitalize %></td>
+        <td style="width:10%"><%= link_to 'Show', doctor_category %></td>
+        <td style="width:10%"><%= link_to 'Edit', edit_doctor_category_path(doctor_category) %></td>
+        <td style="width:10%"><%= link_to 'Destroy', doctor_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  </div>
+  </div>
+<%end%>

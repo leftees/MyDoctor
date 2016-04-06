@@ -1,4 +1,4 @@
-<%= form_for(@doctor) do |f| %>
+<%= form_for(@doctor,  html: { multipart: true }) do |f| %>
 
   <div class="field">
     <%= f.label :name %><br>
@@ -35,6 +35,10 @@
     <%= f.text_field :hospital_phone, class: 'form-control' %>
   </div>
 
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+  </div>
 
   <div class="field" >
     <%= f.label :state %><br>
@@ -46,8 +50,7 @@
       <%= f.select :city, @cities, class: 'form-control', :prompt => '--Select a City--'%>
   </div>
 
-
-    <%= f.fields_for :documents do |builder| %>
+  <%= f.fields_for :documents do |builder| %>
     <% if builder.object.new_record? %>
       <%= builder.label :avatar, "Add Documents" %><br />
       <%= builder.file_field :avatar%>

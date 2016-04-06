@@ -3,14 +3,15 @@
   <%= link_to 'Your Details', edit_doctor_path(current_doctor.id), class: 'navbar-brand' %>
   <%= link_to 'Sign out', destroy_doctor_session_path, :method=>'delete', class: 'navbar-brand' %>
 <% elsif user_signed_in? %>
+  <%= link_to 'Admin', '/admin', class: 'navbar-brand' %>
   <%= link_to 'Doctor Categories', doctor_categories_path, class: 'navbar-brand' %>
   <%= link_to 'Doctors', doctors_path, class: 'navbar-brand' %>
-  <%= link_to 'Admins', users_path, class: 'navbar-brand' %>
+  <%= link_to 'List Admins', users_path, class: 'navbar-brand' %>
   <%= link_to 'Edit Account', edit_user_registration_path, class: 'navbar-brand' %>
   <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete', class: 'navbar-brand' %>
 <% elsif patient_signed_in? %>
   <%= link_to 'Edit Account', edit_patient_registration_path, class: 'navbar-brand' %>
-  <%#= link_to 'Your Details', edit_patient_path(current_patient.id), class: 'navbar-brand' %>
+  <%= link_to 'Your Details', edit_patient_path(current_patient.id), class: 'navbar-brand' %>
   <%= link_to 'Sign out', destroy_patient_session_path, :method=>'delete', class: 'navbar-brand pull-right' %>
 <% else %>
   <%#= link_to 'Admin Sign in', new_user_session_path, class: 'navbar-brand' %>
