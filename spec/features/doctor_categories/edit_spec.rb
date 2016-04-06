@@ -7,7 +7,7 @@ feature 'Edit Doctor Category' do
   	dc = FactoryGirl.create(:doctor_category)
     visit "doctor_categories/#{dc.id}/edit"
     fill_in "doctor_category_name", :with => "My test name"
-    click_button "Update Doctor category"
+    click_button "Submit"
     expect(page).to have_content 'doctor category was successfully updated.'
   end
 
@@ -15,7 +15,7 @@ feature 'Edit Doctor Category' do
   	dc = FactoryGirl.create(:doctor_category)
     visit "doctor_categories/#{dc.id}/edit"
     fill_in "doctor_category_name", :with => ""
-    click_button "Update Doctor category"
+    click_button "Submit"
     expect(page).to have_content 'Edit Doctor Category'
   end
 
@@ -24,7 +24,7 @@ feature 'Edit Doctor Category' do
   	dc = FactoryGirl.create(:doctor_category)
     visit "doctor_categories/#{dc.id}/edit"
     fill_in "doctor_category_name", :with => "45565**%$^"
-    click_button "Update Doctor category"
+    click_button "Submit"
     expect(page).to have_content 'Edit Doctor Category'
   end
 
