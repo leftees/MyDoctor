@@ -13,6 +13,7 @@
   <table class="table" style="width:50%">
     <thead>
       <tr>
+        <th colspan="2">Avatar</th>
         <th colspan="2">Name</th>
         <th >Actions</th>
       </tr>
@@ -20,6 +21,13 @@
     <tbody>
       <% @doctor_categories.each do |doctor_category| %>
         <tr >
+        <td colspan="2">
+        <% if doctor_category.avatar.present? %>
+          <%= image_tag doctor_category.avatar.url(:tiny) %>
+        <% else %>
+          <%= image_tag("missing_doctor_category_avatar.png",size: "50x50") %>
+        <% end %>
+        </td>
         <td colspan="2"><%=doctor_category.name.capitalize %></td>
         <td style="width:10%"><%= link_to 'Show', doctor_category %></td>
         <td style="width:10%"><%= link_to 'Edit', edit_doctor_category_path(doctor_category) %></td>

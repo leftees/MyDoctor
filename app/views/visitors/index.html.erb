@@ -1,3 +1,4 @@
+
 <% if user_signed_in? %>
 	<p><%#= link_to 'Users:', users_path %> <%#= User.count %> </p>
 <% elsif doctor_signed_in? %>
@@ -11,8 +12,14 @@
 	 <h2>Doctor Categories</h2>
 	 <% DoctorCategory.all.each do |doctor_category| %>
 		  <ul class="list-group">
-		    <li class="list-group-item"><span class="badge"><%= doctor_category.doctors.count %></span> 
-		    <%= link_to doctor_category.name, doctor_category %></li>
+      <li class="list-group-item">
+        <% if doctor_category.avatar.present? %>
+          <%= image_tag doctor_category.avatar.url(:tiny) %>
+        <% else %>
+          <%= image_tag("missing_doctor_category_avatar.png",size: "50x50") %>
+        <% end %></li>
+		    <li class="list-group-item"><span class="badge"><%= doctor_category.doctors.active.count %></span> 
+        <%= link_to doctor_category.name, doctor_category %></li>
 		  </ul>
 	  <% end %>
 	</div>
