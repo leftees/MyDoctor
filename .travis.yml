@@ -10,3 +10,6 @@ script:
 before_script:
   - psql -c 'create database mydoctor_test;' -U postgres
 bundler_args: --binstubs=./bundler_stubs
+addons:
+    code_climate:
+        repo_token: 9d60952ac2b6a8fbf784673dfa47660b73283eb970f30d28c720b3ad6a9f34dd
