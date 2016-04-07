@@ -5,9 +5,29 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
+#user = CreateAdminService.new.call
+#puts 'CREATED ADMIN USER: ' << user.email
 
+
+
+## Creating Doctor Categories
+## --------------------------
+
+DoctorCategory.create(name: "Ophthalmologist")
+DoctorCategory.create(name: "Dermatologist")
+DoctorCategory.create(name: "Homeopath")
+DoctorCategory.create(name: "Ayurveda")
+DoctorCategory.create(name: "Cardiologist")
+DoctorCategory.create(name: "Gastroenterologist")
+DoctorCategory.create(name: "Psychiatrist")
+DoctorCategory.create(name: "Urologist")
+DoctorCategory.create(name: "Neurologist")
+DoctorCategory.create(name: "Dentist")
+DoctorCategory.create(name: "Gynecologist-obstetrician")
+DoctorCategory.create(name: "Ear-nose-throat-ent-specialist")
+
+## Creating Doctors
+## ----------------
 
 100.times do |n|
 	hospital_names = ["Sunrise", "EMC", "Apollo", "KIMS", "VASAN"]
