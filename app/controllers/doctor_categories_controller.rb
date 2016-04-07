@@ -1,5 +1,6 @@
 class DoctorCategoriesController < ApplicationController
 	before_action :set_doctor_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_doctors, only: [:show]
 
 
 def index
@@ -7,18 +8,15 @@ def index
 end
 
 def show
-  if !params[:state].blank? and !params[:city].blank?
-  @doctors =  @doctor_category.doctors.active
-                .where(state:params[:state],city:params[:city])
-
-  else
-  @doctors = @doctor_category.doctors.active 
-end
+  if @doctors and !params[:state].blank? and !params[:city].blank?
+    @doctors = @doctors.where(state:params[:state],city:params[:city])
+  end
 end
 
 def new
 	@doctor_category = DoctorCategory.new
 end
+
 def edit
 end
 
@@ -60,6 +58,10 @@ def update
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor_category
       @doctor_category = DoctorCategory.find(params[:id])
+    end
+
+    def set_doctors
+       @doctors =  @doctor_category.doctors.active
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
