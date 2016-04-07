@@ -12,4 +12,4 @@ before_script:
 bundler_args: --binstubs=./bundler_stubs
 addons:
     code_climate:
-        repo_token: 9d60952ac2b6a8fbf784673dfa47660b73283eb970f30d28c720b3ad6a9f34dd
+        repo_token: 7f411420beecb3181eab64d6b6deed6d989ecda4ae0816bfa7c8bfc08a9c6e02
