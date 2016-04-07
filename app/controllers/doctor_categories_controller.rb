@@ -64,7 +64,7 @@ def update
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_category_params
-      params.require(:doctor_category).permit(:name)
+      params.require(:doctor_category).permit(:name, :avatar)
     end
 
 
