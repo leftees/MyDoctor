@@ -37,14 +37,14 @@ class DoctorsController < ApplicationController
     @doctor= Doctor.new(doctor_params)
 
     respond_to do |format|
-	    if @doctor.save
-		  format.html { redirect_to @doctor, notice: 'doctor uploaded'}
-		  format.json { render :show, status: :created, location: @doctor }
-	    else
-	      format.html { render :new }
-	      format.json { render json: @doctor.errors, status: :unprocessable_entity }
-	    end
-	end
+      if @doctor.save
+        format.html { redirect_to @doctor, notice: 'doctor uploaded'}
+	format.json { render :show, status: :created, location: @doctor }
+      else
+	format.html { render :new }
+	format.json { render json: @doctor.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy

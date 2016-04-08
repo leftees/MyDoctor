@@ -1,36 +1,36 @@
 class DoctorCategoriesController < ApplicationController
-	before_action :set_doctor_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_doctor_category, only: [:show, :edit, :update, :destroy]
 
-
-def index
-	@doctor_categories = DoctorCategory.all
-end
-
-def show
-  @doctors = @doctor_category.doctors.active
-end
-
-def new
-	@doctor_category = DoctorCategory.new
-end
-def edit
-end
-
-def create
-	@doctor_category = DoctorCategory.new(doctor_category_params)
-
-	respond_to do |format|
-		if @doctor_category.save
-			format.html { redirect_to @doctor_category, notice: 'doctor category uploaded'}
-			format.json { render :show, status: :created, location: @doctor_category }
-      else
-        format.html { render :new }
-        format.json { render json: @doctor_category.errors, status: :unprocessable_entity }
-      end
-    end
+  def index
+    @doctor_categories = DoctorCategory.all
   end
 
-def update
+  def show
+    @doctors = @doctor_category.doctors.active
+  end
+
+  def new
+    @doctor_category = DoctorCategory.new
+  end
+  
+  def edit
+  end
+
+  def create
+    @doctor_category = DoctorCategory.new(doctor_category_params)
+
+       respond_to do |format|
+         if @doctor_category.save
+	   format.html { redirect_to @doctor_category, notice: 'doctor category uploaded'}
+	   format.json { render :show, status: :created, location: @doctor_category }
+         else
+           format.html { render :new }
+           format.json { render json: @doctor_category.errors, status: :unprocessable_entity }
+         end
+       end
+  end
+
+  def update
     respond_to do |format|
       if @doctor_category.update(doctor_category_params)
         format.html { redirect_to @doctor_category, notice: 'doctor category was successfully updated.' }
