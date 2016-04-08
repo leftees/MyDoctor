@@ -3,14 +3,14 @@ class DoctorsController < ApplicationController
   before_action :get_cities, only: [:edit, :cities]
   
   def index
-  	@doctors = Doctor.all
+    @doctors = Doctor.all
   end
 
   def show
   end
 
   def new
-	@doctor = Doctor.new
+    @doctor = Doctor.new
   end
 
   def edit
@@ -39,10 +39,10 @@ class DoctorsController < ApplicationController
     respond_to do |format|
       if @doctor.save
         format.html { redirect_to @doctor, notice: 'doctor uploaded'}
-	      format.json { render :show, status: :created, location: @doctor }
+	format.json { render :show, status: :created, location: @doctor }
       else
-	      format.html { render :new }
-	      format.json { render json: @doctor.errors, status: :unprocessable_entity }
+	format.html { render :new }
+	format.json { render json: @doctor.errors, status: :unprocessable_entity }
       end
     end
   end

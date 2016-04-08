@@ -21,8 +21,8 @@ class DoctorCategoriesController < ApplicationController
 
       respond_to do |format|
         if @doctor_category.save
-	        format.html { redirect_to @doctor_category, notice: 'doctor category uploaded'}
-	        format.json { render :show, status: :created, location: @doctor_category }
+	  format.html { redirect_to @doctor_category, notice: 'doctor category uploaded'}
+	  format.json { render :show, status: :created, location: @doctor_category }
         else
           format.html { render :new }
           format.json { render json: @doctor_category.errors, status: :unprocessable_entity }
