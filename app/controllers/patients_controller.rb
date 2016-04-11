@@ -3,14 +3,14 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@patients = Patient.all
+    @patients = Patient.all
   end
 
   def show
   end
 
   def new
-	@patient = Patient.new
+    @patient = Patient.new
   end
 
   def edit
@@ -32,14 +32,14 @@ class PatientsController < ApplicationController
     @patient= Patient.new(patient_params)
 
     respond_to do |format|
-	    if @patient.save
-		  format.html { redirect_to @patient, notice: 'Patient was successfully created'}
-		  format.json { render :show, status: :created, location: @patient }
-	    else
-	      format.html { render :new }
-	      format.json { render json: @patient.errors, status: :unprocessable_entity }
-	    end
-	end
+      if @patient.save
+        format.html { redirect_to @patient, notice: 'Patient was successfully created'}
+	format.json { render :show, status: :created, location: @patient }
+      else
+	format.html { render :new }
+	format.json { render json: @patient.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
