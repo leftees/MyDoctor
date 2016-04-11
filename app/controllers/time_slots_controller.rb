@@ -4,19 +4,20 @@ class TimeSlotsController < ApplicationController
 
 
   def create
-    begin
+    begin 
       @time_slot = TimeSlot.new(time_slot_params)
       @time_slot.week_days = params[:week_days] 
       @message = "Please check the details" if !@time_slot.save
-    rescue Exception => e 
+    rescue StandardError => e
+      logger.error e.message
     end
     set_time_slots
-  	render  partial: "time_slots"
+  	render partial: "time_slots"
   end
 
   def destroy
     @time_slot.destroy
-    render  partial: "time_slots"
+    render partial: "time_slots"
   end
 
   private
@@ -32,5 +33,5 @@ class TimeSlotsController < ApplicationController
     def time_slot_params
       params.require(:time_slot).permit(:from, :to, :duration,  :doctor_id)
     end
-    
+
 end
