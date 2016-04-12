@@ -2,31 +2,30 @@ class DoctorCategoriesController < ApplicationController
 	before_action :set_doctor_category, only: [:show, :edit, :update, :destroy]
   before_action :set_doctors, only: [:show]
 
-
-def index
-	@doctor_categories = DoctorCategory.all
-end
-
-def show
-  if @doctors and !params[:state].blank? and !params[:city].blank?
-    @doctors = @doctors.where(state:params[:state],city:params[:city])
+  def index
+    @doctor_categories = DoctorCategory.all
   end
-end
 
-def new
-	@doctor_category = DoctorCategory.new
-end
+  def show
+    if @doctors and !params[:state].blank? and !params[:city].blank?
+      @doctors = @doctors.where(state:params[:state],city:params[:city])
+    end
+  end
 
-def edit
-end
+  def new
+  	@doctor_category = DoctorCategory.new
+  end
 
-def create
-	@doctor_category = DoctorCategory.new(doctor_category_params)
+  def edit
+  end
 
-	respond_to do |format|
-		if @doctor_category.save
-			format.html { redirect_to @doctor_category, notice: 'doctor category uploaded'}
-			format.json { render :show, status: :created, location: @doctor_category }
+  def create
+    @doctor_category = DoctorCategory.new(doctor_category_params)
+
+    respond_to do |format|
+      if @doctor_category.save
+	      format.html { redirect_to @doctor_category, notice: 'doctor category uploaded'}
+	      format.json { render :show, status: :created, location: @doctor_category }
       else
         format.html { render :new }
         format.json { render json: @doctor_category.errors, status: :unprocessable_entity }
@@ -34,7 +33,7 @@ def create
     end
   end
 
-def update
+  def update
     respond_to do |format|
       if @doctor_category.update(doctor_category_params)
         format.html { redirect_to @doctor_category, notice: 'doctor category was successfully updated.' }
@@ -68,8 +67,7 @@ def update
     def doctor_category_params
       params.require(:doctor_category).permit(:name, :avatar)
     end
-
-
+    
 end
 
 
