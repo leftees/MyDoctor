@@ -1,31 +1,21 @@
-
-
 <div class="container">
-      <form class="form-inline" role="form">
-            <div class="form-group">
-                 <%= form_tag("/doctor_categories/#{params[:id]}", method: "get") do %>
-            <div class="field" >
-                 <%= select_tag "state", options_from_collection_for_select(CS.states(:in),:first, :last) , :prompt => '--Select State--'%>
-            </div>
-            </div>
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <%= form_tag("/doctor_categories/#{params[:id]}", method: "get") do %>
+      <div class="field" >
+        <%= select_tag "state", options_from_collection_for_select(CS.states(:in),:first, :last) , :prompt => '--Select State--'%>
+      </div>
+    </div>
 
-            <div class="form-group">
-            <div class="field" id='home-state-cities' >
-                 <%= select_tag "city", @cities, :prompt => '--Select City--'%>
-            </div>
-            </div>
-
-     &nbsp       <%= button_tag(type: "submit", class: "btn btn-success") do %>
+    <div class="form-group">
+      <div class="field" id='home-state-cities' >
+        <%= select_tag "city", @cities, :prompt => '--Select City--'%>
+      </div>
+    </div>
+    &nbsp<%= button_tag(type: "submit", class: "btn btn-success") do %>
     Search <i class="icon-repeat"></i>
 <% end %>
-
-            
-
   <% end %>
-
-
-    
-
 
   <ul class="nav pull-right">
   <div class="dropdown">
@@ -33,19 +23,13 @@
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Doctor Category
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="/doctor_categories/12">physician</a></li>
-      <li><a href="/doctor_categories/13">cardiologist</a></li>
-      <li><a href="/doctor_categories/14">pediatrician</a></li>
-      <li><a href="/doctor_categories/11">deitician</a></li>
-      <li><a href="/doctor_categories/15">opthalmologist</a></li></div>
+      <% DoctorCategory.all.each do |dc|%>
+        <li><%= link_to dc.name, doctor_category_path(dc.id) %></li>
+        <% end %>
 
     </ul>
+    </div>
     </ul>
-  
-  
-
-
-
 
     <h2>Listing Doctors for <%= @doctor_category.name%></h2>
     <% @doctors.all.each do |doctor| %>
