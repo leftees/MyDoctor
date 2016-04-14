@@ -10,5 +10,5 @@ before_script:
 bundler_args: --binstubs=./bundler_stubs
 
 env:
-  - VAR=VAL
+  - VAR=CODECLIMATE_REPO_TOKEN
 #comment to test
