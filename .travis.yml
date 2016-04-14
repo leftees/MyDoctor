@@ -1,8 +1,6 @@
 language: ruby
 rvm:
   - "2.2.3"
-env:
-  - DB=postgresql
 script: 
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
@@ -10,3 +8,7 @@ script:
 before_script:
   - psql -c 'create database mydoctor_test;' -U postgres
 bundler_args: --binstubs=./bundler_stubs
+
+addons:
+    code_climate:
+        repo_token: 2b0c980592a9ca4d99db0472b63b2c0082b1f84251fdfcd1143c2357ce676e1d
