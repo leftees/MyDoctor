@@ -1,33 +1,36 @@
 class DoctorCategoriesController < ApplicationController
-  before_action :set_doctor_category, only: [:show, :edit, :update, :destroy]
+	before_action :set_doctor_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_doctors, only: [:show]
 
   def index
     @doctor_categories = DoctorCategory.all
   end
 
   def show
-    @doctors = @doctor_category.doctors.active
+    if @doctors and !params[:state].blank? and !params[:city].blank?
+      @doctors = @doctors.where(state:params[:state],city:params[:city])
+    end
   end
 
   def new
-    @doctor_category = DoctorCategory.new
+  	@doctor_category = DoctorCategory.new
   end
-  
+
   def edit
   end
 
   def create
     @doctor_category = DoctorCategory.new(doctor_category_params)
 
-      respond_to do |format|
-        if @doctor_category.save
-	  format.html { redirect_to @doctor_category, notice: 'doctor category uploaded'}
-	  format.json { render :show, status: :created, location: @doctor_category }
-        else
-          format.html { render :new }
-          format.json { render json: @doctor_category.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @doctor_category.save
+	      format.html { redirect_to @doctor_category, notice: 'doctor category uploaded'}
+	      format.json { render :show, status: :created, location: @doctor_category }
+      else
+        format.html { render :new }
+        format.json { render json: @doctor_category.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   def update
@@ -56,12 +59,15 @@ class DoctorCategoriesController < ApplicationController
       @doctor_category = DoctorCategory.find(params[:id])
     end
 
+    def set_doctors
+       @doctors =  @doctor_category.doctors.active
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_category_params
       params.require(:doctor_category).permit(:name, :avatar)
     end
-
-
+    
 end
 
 
